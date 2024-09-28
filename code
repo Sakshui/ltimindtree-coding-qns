@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+class LuckyNumber {
+    public static boolean isLuckyNumber(int num) {
+        String numStr = String.valueOf(Math.abs(num));  // Convert the number to a string
+        int length = numStr.length();
+        
+        if (length % 2 != 0) {
+            System.out.println("Number of digits is not even!");
+            return false;  // If the number of digits is not even, return false
+        }
+
+        int mid = length / 2;
+        int sumFirstHalf = 0;
+        int sumSecondHalf = 0;
+
+        // Calculate sum of the first half
+        for (int i = 0; i < mid; i++) {
+            sumFirstHalf += Character.getNumericValue(numStr.charAt(i));
+        }
+
+        // Calculate sum of the second half
+        for (int i = mid; i < length; i++) {
+            sumSecondHalf += Character.getNumericValue(numStr.charAt(i));
+        }
+
+        // Check if the sums are equal
+        return sumFirstHalf == sumSecondHalf;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an even-digit number: ");
+        int num = scanner.nextInt();
+
+        if (isLuckyNumber(num)) {
+            System.out.println(num + " is a Lucky Number!");
+        } else {
+            System.out.println(num + " is NOT a Lucky Number.");
+        }
+    }
+}
