@@ -1,0 +1,12 @@
+import java.util.*;
+
+class CountVowels {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String s = sc.nextLine();
+
+        int vowelCount = s.length() - s.replaceAll("[aeiouAEIOU]", "").length();
+        System.out.println("Number of vowels: " + vowelCount);
+    }
+}
